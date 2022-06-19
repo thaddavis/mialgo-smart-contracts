@@ -1,0 +1,22 @@
+;; Get and print the circulating supply
+(define-public (send (amount uint) (reciever principal)
+    (ft-transfer? mialgo amount tx-sender reciever)
+)
+
+;; Define clarity-coin with a maximum of 1,000,000 tokens.
+(define-fungible-token mialgo u1000000)
+
+;; Mint 1,000 tokens and give them to tx-sender.
+(ft-mint? mialgo u1000 tx-sender)
+
+;; Transfer 500 tokens from tx-sender to another principal.
+(ft-transfer? mialgo u500 tx-sender 'ST1J4G6RR643BCG8G8SR6M2D9Z9KXT2NJDRK3FBTK)
+
+;; Get and print the token balance of tx-sender.
+(print (ft-get-balance mialgo tx-sender))
+
+;; Burn 250 tokens (destroys them)
+(ft-burn? mialgo u250 'ST1J4G6RR643BCG8G8SR6M2D9Z9KXT2NJDRK3FBTK)
+
+;; Get and print the circulating supply
+(print (ft-get-supply mialgo))
